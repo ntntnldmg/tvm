@@ -1,4 +1,4 @@
-tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
+tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve", precision=2) {
 	if (
 		typeof(fv) == "double" &&
 		typeof(pmt) == "double" &&
@@ -9,7 +9,7 @@ tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
 		r <- i/100
 		pv <- fv / (1+r)^n + pmt * (1 - (1+r)^(-n)) / r
 		
-		return(data.frame(PV=round(-pv,2)))
+		return(data.frame(pv=round(-pv,precision)))
 	}
 	else if (
 	  typeof(pv) == "double" &&
@@ -21,7 +21,7 @@ tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
 		r <- i/100
 		fv <- (pv * (1+r)^n + pmt * ((1+r)^n - 1) / r)
 		
-		return(data.frame(FV=round(-fv,2)))
+		return(data.frame(fv=round(-fv,precision)))
 	}
 	else if (
 		typeof(pv) == "double" &&
@@ -33,7 +33,7 @@ tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
 		r <- i/100
 		pmt <- (pv + fv / (1+r)^n) / ((1 - (1+r)^(-n)) / r)
 		
-		return(data.frame(PMT=round(-pmt,2)))
+		return(data.frame(pmt=round(-pmt,precision)))
 	}
 	else if (
 		typeof(pv) == "double" &&
@@ -45,7 +45,7 @@ tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
 		r <- i/100
 		n <- log((fv - pmt/r) / (-pv - pmt/r), base=1+r)
 		
-		return(data.frame(N=round(n,2)))
+		return(data.frame(n=round(n,precision)))
 	}
 	else if (
 		typeof(pv) == "double" &&
@@ -89,7 +89,7 @@ tvm <- function(pv="solve", fv="solve", pmt="solve", n="solve", i="solve") {
 			}
 		}
 		
-		return(data.frame(I=round(r*100,2)))
+		return(data.frame(i=round(r*100,precision)))
 	}
 	else {
 		print("Inappropriate specification")
