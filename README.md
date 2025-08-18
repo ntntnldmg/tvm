@@ -96,8 +96,8 @@ tvm(fv=0, pmt=monthly.pmt, n=(30-12)*12-4, i=4.5/12)
 
 **Answer**
 
-The current balance on the loan is USD 111,014.40.
+The remaining balance on the loan is USD 111,014.40.
 
 ## Contact
 
-If you have feedback or suggestions, feel free to send me an email at <ntntnldmg@gmail.com>.
+If you have suggestions or feedback, feel free to contact me at <ntntnldmg@gmail.com>.
